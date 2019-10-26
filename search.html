@@ -4,30 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+   <!-- <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon"> -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/css/OverlayScrollbars.min.css'>
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+   <!-- Bulma Version 0.8.x-->
+   <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+   <!-- <link rel="stylesheet" type="text/css" href="../css/hero.css"> -->
+   <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+   <!-- add to css -->
+    <style>
+   .columns:nth-child(2)
+   {margin-top: -10rem;}
+   </style> 
+   <title>Search recipes</title>
+    </head>
 <body>
-    <!--  header on this page looks the same except it doesnt have the breakfast lunch or dinner option in the header
-    copy header html from index page
-
-I can search for recipes using a form that allows me to select meal type, dish type, diet, healt, and exclusions.
-    user input is in a drop down function, create event listeners for each to assign the 
-
-I press submit and the recipes populate below the search form
-    add event listener to the submit recipe to show result container
-
-If one of those searched recipes looks good I can click the picture to see more details
-     add event listener to open the recipe card pop up
-
+<!--header on this page looks the same except it doesnt have the breakfast lunch or dinner option 
+in the header copy header html from index page-->
+<section class="hero is-info is-small">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        Recipal
+      </p>
+      <p class="subtitle">
+        Temp text
+      </p>
+    </div>
+  </div>
+</section>
+<!-- I can search for recipes using a form that allows me to select meal type, dish type, diet, health, and exclusions.
+    user input is in a drop down function, create event listeners for each to assign the-->
+                <hr class="my-4" />
+                <div class="card">
+                      <div class="card-header">
+                       Search Parameters
+                      </div>
+                      <div class="card-body">
+                        <form>
+                              <div class="form-group">
+                                <label for="formGroupExampleInput">Meal Type:</label><!---such as Breakfast Lunch Dinner and Snack-->
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                              </div>
+                              <div class="form-group">
+                                <label for="formGroupExampleInput2"> Dish Type:</label><!---such as Side dish, Main Dish, Entrees, appetizers, dessert  -->
+                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                              </div>
+                              <div class="form-group">
+                                      <label for="formGroupExampleInput2"> Cusine Type:</label> <!---such as “cuisineType=chinese cuisineType=indian”-->
+                                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                                    </div>
+                                    <div class="form-group">
+                                          <label for="formGroupExampleInput2">Health Restrictions</label><!---such as peanut-free or tree-nut free or gluten-free-->
+                                          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                                        </div>
+                                    <div class="form-group">
+                                                <label for="formGroupExampleInput2">Exclusion</label> 
+                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                                        </div>
+<!--I press submit and the recipes populate below the search form
+add event listener to the submit recipe to show result container-->
+                                        <button>Search/Submit </button> <button>Clear Results</button>
+                            </form>
+                      </div>
+                    </div>
+                    <br/>
+<!---If one of those searched recipes looks good I can click the picture to see more 
+details add event listener to open the recipe card pop up-->
+                    <div class="card">
+                          <div class="card-header">
+                           Top Recipes
+                          </div>
+                          <div class="card-body">
+                           <div></div>
+                       </div>
+                  </div>
+                 </div>
+              </div>
+<!--
  future add ons - favorite recipes from the pop up function which will add a recipe card to local storage displayed on a new page 
  future add ons - load more options that will display six more default recommended recipes
  future add ons - share options to share recipe with friends -->
- <script src="script.js"></script>
- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
-
-
-
 </body>
 </html>
