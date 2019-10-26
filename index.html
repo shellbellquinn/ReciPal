@@ -51,9 +51,9 @@
 
       <!--recommended recipes card container-->
                 <!-- //The page loads to display 6 popular breakfast lunch or dinner foods depending on the time
-    // use moment.js to determine which mealType is default displayed
+    // use moment.js to determine which mealType is default -->displayed
       <section class="recipeContainer">
-      <div class="columns">
+      <div class="columns" id="recipeModal">
         <div class="column">
           <img class="recipeImg">
           <h2 class="recipeLabel"></h2>
@@ -62,7 +62,7 @@
       </div>
       </section>
 
-//I have the choice to switch from breakfast lunch dinner or snack manually and the default display will change to reflect my choice
+<!--I have the choice to switch from breakfast lunch dinner or snack manually and the default display will change to reflect my choice
     // add event listeners to change the defaul mealType to new mealType when button is clicked
     
 // If one of those origanal recipes looks good I can click the picture to see more details
@@ -76,6 +76,11 @@
 // future add ons - share options to share recipe with friends -->
     
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
