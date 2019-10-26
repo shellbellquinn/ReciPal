@@ -1,3 +1,19 @@
+var mealType= "breakfast"
+var queryURL = "https://api.edamam.com/search?q=breakfast&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=breakfast";
+ 
+//  function defaultRecipe() {
+
+$.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(data) {
+
+    console.log(data);
+    console.log("test");
+
+  });
+
+
 
 // click listener for meal time buttons
 
@@ -9,12 +25,41 @@
 
 
 // click listener for recipie card pop out
-$(".recipieAPI")
+// $(".recipieAPI")
 
-//this can be linked in the html
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
-<script src="script.js"></script>
+
+
+// // FOR LOOP TO DISPLAY BREAKFAST LUNCH OR DINNER AFTER MOMENT
+  for (var i = 1; i < 12; i++) {
+  if (mealType = "breakfast"){
+
+      $('.columns').append(`<div class="column" data-attr="breakfast">
+    
+             <!--text row-->
+                 <h2 class="recipeLabel"> RecipeLable </h2>
+    
+             <!--Img-->
+                 <img class="recipeImg" scr= imgSrc>`);
+  }
+  else if (mealType = "lunch"){
+      $('.columns').append(`<div class="column" data-attr="lunch">
+    
+             <!--text row-->
+                 <h2 class="recipeLabel"> RecipeLable </h2>
+    
+             <!--Img-->
+                 <img class="recipeImg" scr= imgSrc>`);
+  }
+
+  else if (mealType = "dinner"){
+      $('.columns').append(`<div class="column" data-attr="dinner">
+    
+             <!--text row-->
+                 <h2 class="recipeLabel"> RecipeLable </h2>
+    
+             <!--Img-->
+                 <img class="recipeImg" scr= imgSrc>`);
+  }
+  };
