@@ -1,3 +1,4 @@
+
 // moment meal suggestion 
 var zeroTest = 0
 var nineTime = moment().set("hour",9).format("H");
@@ -72,7 +73,8 @@ $("#dinnerBox").click(function(){
 
 
 // click listener for recipie card pop out
-$(".recipieAPI")
+// $(".recipieAPI")
 
-//this can be linked in the html
+
+
 
