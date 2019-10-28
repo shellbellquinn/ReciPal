@@ -23,7 +23,7 @@ $.ajax({
              <h2 class="recipeLabel">${recipe} </h2>
 
         <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+            <button class="popUp"> View Recipe </button>`);
 
       
 
