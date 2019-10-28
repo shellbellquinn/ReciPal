@@ -92,7 +92,7 @@ else if (currentHour >= 11 && currentHour < 16) {
     mealType === "lunch"
 } else {
     $(".subtitle").text("It's dinner time!");
-    mealType = "dinner"
+    mealType === "dinner"
 }
 
 
@@ -109,9 +109,32 @@ else if (currentHour >= 11 && currentHour < 16) {
 
 //click listener for meal time buttons
 //breakfast button
-// $("#breakfastBox").click(function () {
+// .then(function (response) {
+// $(‘#breakfast’).click(function() {
 
-// });
+
+    $(document).ready(function() {
+        $("#breakfastBox").click(function() {
+          mealType = 'breakfast'
+          // put ajax call here
+        });
+       });
+    
+    $(document).ready(function() {
+        $("#lunchBox").click(function() {
+          mealType = 'lunch'
+          // put ajax call here
+        });
+       });
+    
+    $(document).ready(function() {
+        $("#dinnerBox").click(function() {
+          mealType = 'dinner'
+          // put ajax call here 
+        });
+       });
+
+    
 
 // // lunch button
 
@@ -128,3 +151,7 @@ else if (currentHour >= 11 && currentHour < 16) {
 // //click listener for see more 
 
 // click listener 
+
+// callie's notes!
+// remove it from there. when you click the breakfast button you should call 
+// another function like getRecipesByType('breakfast') {} and add the code in there
