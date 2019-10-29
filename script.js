@@ -2,6 +2,8 @@ var mealType
 var display
 var num
 var numToDisplay
+
+//moment variables
 var zeroTest = 0
 var nineTime = moment().set("hour", 9).format("H");
 var tenTime = moment().set("hour", 10).format("H");
@@ -15,50 +17,35 @@ var fiveTime = moment().set("hour", 17).format("H");
 var sixTime = moment().set("hour", 18).format("H");
 var sevenTime = moment().set("hour", 19).format("H");
 var eightTime = moment().set("hour", 20).format("H");
-
-// //console.log(tenTime)
-
 var hourNow = moment().format('MMMM Do YYYY, HH:mm:ss a')
 var currentHour = moment().format('H')
 
 
-// Creates AJAX call for the specific movie button being clicked
-
-
+// Creates AJAX call for the recipes
 function recipeCall() {
     $.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    display = response;
-    displayRecipes(6)
-});
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        display = response;
+        displayRecipes(6)
+    });
 }
-    
 
-// $.data('notClicked').click(function () {
-//     displayRecipes(12)
-//     $('#seeMore').attr('data-info', 'clicked');
-// });
-
-// $.data('clicked').click(function() {
-//     displayRecipes(6)
-//     $('#seeMore').attr('data-info', 'notClicked');
-// });
-
-$( "#seeMore" ).on( "click", function () {
+//see more and see less options on main page
+$("#seeMore").on("click", function () {
     $(this).hide()
     $("#seeLess").show()
     displayRecipes(12)
 });
 
-$( "#seeLess" ).on( "click", function () {
+$("#seeLess").on("click", function () {
     $(this).hide()
     $("#seeMore").show()
     displayRecipes(6)
 });
 
-
+//The page loads to display 6 or 12 popular breakfast lunch or dinner foods depending on the time and buttons pressed
 function displayRecipes(num) {
     $(".columns").empty();
     for (var i = 0; i < num; i++) {
@@ -97,7 +84,7 @@ function displayRecipes(num) {
     }
 }
 
-
+// use moment.js to determine which mealType is default displayed-->
 if (currentHour > 0 && currentHour < 11) {
     $(".subtitle").text("It's breakfast time!")
     mealType = "breakfast"
@@ -115,9 +102,8 @@ if (currentHour > 0 && currentHour < 11) {
     recipeCall();
 }
 
-
-
-
+//I have the choice to switch from breakfast lunch dinner or snack manually and the default display will change to reflect my choice
+// add event listeners to change the defaul mealType to new mealType when button is clicked-->
 $("#breakfastBox").click(function () {
     $(".subtitle").text("It's breakfast time!")
     mealType = "breakfast"
@@ -141,3 +127,5 @@ $("#dinnerBox").click(function () {
     recipeCall();
 })
 
+// If one of the recipes looks good I can click the picture to see more details
+// add event listener to open the recipe card pop up within the display recipe function-->
