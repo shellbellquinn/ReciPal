@@ -99,8 +99,6 @@ if (currentHour > 0 && currentHour < 11) {
 }
 
 
-
-
 $("#breakfastBox").click(function () {
     $(".subtitle").text("It's breakfast time!")
     mealType = "breakfast"
