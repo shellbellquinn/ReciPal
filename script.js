@@ -1,57 +1,57 @@
 var mealType 
 //$(this).attr("data-attr");
-var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
+// var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
 
-// Creates AJAX call for the specific movie button being clicked
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
+// // Creates AJAX call for the specific movie button being clicked
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+// }).then(function (response) {
 
 
-    for (var i = 0; i < 6; i++) {
-        var recipe = JSON.stringify(response.hits[i].recipe.label);
-        var imgSrc = JSON.stringify(response.hits[i].recipe.image);
+    // for (var i = 0; i < 6; i++) {
+    //     var recipe = JSON.stringify(response.hits[i].recipe.label);
+    //     var imgSrc = JSON.stringify(response.hits[i].recipe.image);
 
-        if (mealType === "breakfast") {
+    //     if (mealType === "breakfast") {
 
-            $('.columns').append(`<div class="column" data-attr="breakfast">
-        <!--Img-->
-             <img class="recipeImg" src= ${imgSrc}>
+    //         $('.columns').append(`<div class="column" data-attr="breakfast">
+    //     <!--Img-->
+    //          <img class="recipeImg" src= ${imgSrc}>
 
-         <!--text row-->
-             <h2 class="recipeLabel">${recipe} </h2>
+    //      <!--text row-->
+    //          <h2 class="recipeLabel">${recipe} </h2>
 
-        <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+    //     <!--button row-->     
+    //     <button class="popUp"> View Recipe </button>`);
 
       
 
 
-        } else if (mealType === "lunch") {
-            $('.columns').append(`<div class="column" data-attr="lunch">
-        <!--Img-->
-             <img class="recipeImg" src= ${imgSrc}>
+//         } else if (mealType === "lunch") {
+//             $('.columns').append(`<div class="column" data-attr="lunch">
+//         <!--Img-->
+//              <img class="recipeImg" src= ${imgSrc}>
 
-         <!--text row-->
-             <h2 class="recipeLabel">${recipe} </h2>
-        <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+//          <!--text row-->
+//              <h2 class="recipeLabel">${recipe} </h2>
+//         <!--button row-->     
+//         <button class="popUp"> View Recipe </button>`);
 
-        } else {
-            $('.columns').append(`<div class="column" data-attr="dinner">
-        <!--Img-->
-             <img class="recipeImg" src= ${imgSrc}>
+//         } else {
+//             $('.columns').append(`<div class="column" data-attr="dinner">
+//         <!--Img-->
+//              <img class="recipeImg" src= ${imgSrc}>
 
-         <!--text row-->
-             <h2 class="recipeLabel">${recipe} </h2>
-        <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
-        }
-    }
+//          <!--text row-->
+//              <h2 class="recipeLabel">${recipe} </h2>
+//         <!--button row-->     
+//         <button class="popUp"> View Recipe </button>`);
+//         }
+//     }
 
 
-})
+// })
 
 
 
@@ -76,82 +76,196 @@ $.ajax({
 
  var currentHour = moment().format('H')
 
- //breakfast lunch and dinner time
- // if now > 0 && < 12
-//console.log(currentHour)
+
 
 
 
 if (currentHour > 0 && currentHour < 11) {
-    $(".subtitle").text("It's breakfast time!")
-    mealType === "breakfast"
-}
+   $(".subtitle").text("It's breakfast time!")
+    console.log('got here')
+   mealType = "breakfast"
+   var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
+
+$.ajax({
+        url: queryURL,
+        method: "GET"
+     }).then(function(response) {
+    
+        for (var i = 0; i < 6; i++) {
+            var recipe = JSON.stringify(response.hits[i].recipe.label);
+            var imgSrc = JSON.stringify(response.hits[i].recipe.image);           
+    
+            $('.columns').append(`<div class="column" data-attr="breakfast">
+            <!--Img-->
+                 <img class="recipeImg" src= ${imgSrc}>
+    
+             <!--text row-->
+                 <h2 class="recipeLabel">${recipe} </h2>
+    
+            <!--button row-->     
+            <button class="popUp"> View Recipe </button>`);
+    
+        }  
+    })
+} // end of if statment 
 //  block of code to be executed if condition1 is true
 else if (currentHour >= 11 && currentHour < 16) {
     $(".subtitle").text("It's lunch time!");
-    mealType === "lunch"
-} else {
+    mealType = "lunch"
+    var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
+
+    $.ajax({
+            url: queryURL,
+            method: "GET"
+         }).then(function(response) {
+        
+            for (var i = 0; i < 6; i++) {
+                var recipe = JSON.stringify(response.hits[i].recipe.label);
+                var imgSrc = JSON.stringify(response.hits[i].recipe.image);           
+        
+                $('.columns').append(`<div class="column" data-attr="lunch">
+                <!--Img-->
+                     <img class="recipeImg" src= ${imgSrc}>
+        
+                 <!--text row-->
+                     <h2 class="recipeLabel">${recipe} </h2>
+        
+                <!--button row-->     
+                <button class="popUp"> View Recipe </button>`);
+        
+            }  
+        })
+    }
+  else {
     $(".subtitle").text("It's dinner time!");
-    mealType === "dinner"
-}
+    mealType = "dinner"
+    var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
 
-
-//  block of code to be executed if the condition1 is false and condition2 is true
-// if (currentHour > 4 && currentHour < 8){
-//  $(".subtitle").text("It's dinner time!")
-//  }
-// else (currentHour > 8)
-// $(".subtitle").text("It's dinner or snack time!");
-
-
-
-
-
+    $.ajax({
+            url: queryURL,
+            method: "GET"
+         }).then(function(response) {
+        
+            for (var i = 0; i < 6; i++) {
+                var recipe = JSON.stringify(response.hits[i].recipe.label);
+                var imgSrc = JSON.stringify(response.hits[i].recipe.image);           
+        
+                $('.columns').append(`<div class="column" data-attr="dinner">
+                <!--Img-->
+                     <img class="recipeImg" src= ${imgSrc}>
+        
+                 <!--text row-->
+                     <h2 class="recipeLabel">${recipe} </h2>
+        
+                <!--button row-->     
+                <button class="popUp"> View Recipe </button>`);
+        
+            }  
+        })
+    }
+ 
 //click listener for meal time buttons
 //breakfast button
 // .then(function (response) {
 // $(‘#breakfast’).click(function() {
 
 
-    $(document).ready(function() {
-        $("#breakfastBox").click(function() {
-          mealType = 'breakfast'
-          // put ajax call here
-        });
-       });
+
+    $("#breakfastBox").click(function() {
+        $(".columns").empty();
+        mealType = "breakfast"
+
+        var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
+
+        $.ajax({
+                url: queryURL,
+                method: "GET"
+             }).then(function(response) {
+            
+                for (var i = 0; i < 6; i++) {
+                    var recipe = JSON.stringify(response.hits[i].recipe.label);
+                    var imgSrc = JSON.stringify(response.hits[i].recipe.image);           
+            
+                    $('.columns').append(`<div class="column" data-attr="breakfast">
+                    <!--Img-->
+                         <img class="recipeImg" src= ${imgSrc}>
+            
+                     <!--text row-->
+                         <h2 class="recipeLabel">${recipe} </h2>
+            
+                    <!--button row-->     
+                    <button class="popUp"> View Recipe </button>`);
+            
+                }  
+            })
+        })
+        
+
     
-    $(document).ready(function() {
+  
         $("#lunchBox").click(function() {
-          mealType = 'lunch'
-          // put ajax call here
-        });
-       });
+          $(".columns").empty();
+            mealType = "lunch"
     
-    $(document).ready(function() {
-        $("#dinnerBox").click(function() {
-          mealType = 'dinner'
-          // put ajax call here 
-        });
-       });
+            var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
+    
+            $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                 }).then(function(response) {
+                
+                    for (var i = 0; i < 6; i++) {
+                        var recipe = JSON.stringify(response.hits[i].recipe.label);
+                        var imgSrc = JSON.stringify(response.hits[i].recipe.image);           
+                
+                        $('.columns').append(`<div class="column" data-attr="lunch">
+                        <!--Img-->
+                             <img class="recipeImg" src= ${imgSrc}>
+                
+                         <!--text row-->
+                             <h2 class="recipeLabel">${recipe} </h2>
+                
+                        <!--button row-->     
+                        <button class="popUp"> View Recipe </button>`);
+                
+                    }  
+                })
+            })
+            
 
     
+      $("#dinnerBox").click(function() {
+        $(".columns").empty();
+        mealType = "dinner"
 
-// // lunch button
+        var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
 
-// $("#lunchBox").click(function () {
+        $.ajax({
+                url: queryURL,
+                method: "GET"
+             }).then(function(response) {
+            
+                for (var i = 0; i < 6; i++) {
+                    var recipe = JSON.stringify(response.hits[i].recipe.label);
+                    var imgSrc = JSON.stringify(response.hits[i].recipe.image);           
+            
+                    $('.columns').append(`<div class="column" data-attr="dinner">
+                    <!--Img-->
+                         <img class="recipeImg" src= ${imgSrc}>
+            
+                     <!--text row-->
+                         <h2 class="recipeLabel">${recipe} </h2>
+            
+                    <!--button row-->     
+                    <button class="popUp"> View Recipe </button>`);
+            
+                }  
+            })
+        })
 
-// });
-// // dinner button 
-
-// $("#dinnerBox").click(function () {
-
-// });
+    
 
 
 // //click listener for see more 
 
 // click listener 
-
-// callie's notes!
-// remove it from there. when you click the breakfast button you should call 
-// another function like getRecipesByType('breakfast') {} and add the code in there
