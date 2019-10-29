@@ -35,6 +35,7 @@ function recipeCall() {
 //see more and see less options on main page
 $("#seeMore").on("click", function () {
     $(this).hide()
+    $("#seeLess").removeClass('is-hidden')
     $("#seeLess").show()
     displayRecipes(12)
 });
@@ -54,13 +55,13 @@ function displayRecipes(num) {
 
         if (mealType === "breakfast") {
 
-            $('.columns').append(`<div class="column" data-attr="breakfast">
+        $('.columns').append(`<div class="column" data-attr="breakfast">
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-            <button class="popUp"> View Recipe </button>`);
+            <button class="popUp button is-warning is-light"> View Recipe </button>`);
 
 
         } else if (mealType === "lunch") {
@@ -70,7 +71,7 @@ function displayRecipes(num) {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+        <button class="popUp button is-warning is-light"> View Recipe </button>`);
 
         } else {
             $('.columns').append(`<div class="column" data-attr={"dinner"}>
@@ -79,24 +80,24 @@ function displayRecipes(num) {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+        <button class="popUp button is-warning is-light"> View Recipe </button>`);
         }
     }
 }
 
 // use moment.js to determine which mealType is default displayed-->
 if (currentHour > 0 && currentHour < 11) {
-    $(".subtitle").text("It's breakfast time!")
+    $(".subtitle").text("It's breakfast time! Click the buttons below for more options.")
     mealType = "breakfast"
     queryURL = "https://api.edamam.com/search?q=breakfast&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=" + mealType;
     recipeCall();
 } else if (currentHour >= 11 && currentHour < 16) {
-    $(".subtitle").text("It's lunch time!");
+    $(".subtitle").text("It's lunch time! Click the buttons below for more options.");
     mealType = "lunch"
     queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=picnic&mealType=" + mealType;
     recipeCall();
 } else {
-    $(".subtitle").text("It's dinner time!");
+    $(".subtitle").text("It's dinner time! Click the buttons below for more options.");
     mealType = "dinner"
     queryURL = "https://api.edamam.com/search?q=dinner&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=rolls&excluded=cream&excluded=pancakes&mealType=" + mealType;
     recipeCall();
@@ -105,7 +106,7 @@ if (currentHour > 0 && currentHour < 11) {
 //I have the choice to switch from breakfast lunch dinner or snack manually and the default display will change to reflect my choice
 // add event listeners to change the defaul mealType to new mealType when button is clicked-->
 $("#breakfastBox").click(function () {
-    $(".subtitle").text("It's breakfast time!")
+    $(".subtitle").text("It's breakfast time! Click the buttons below for more options.")
     mealType = "breakfast"
     queryURL = "https://api.edamam.com/search?q=breakfast&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=" + mealType;
     recipeCall();
@@ -113,7 +114,7 @@ $("#breakfastBox").click(function () {
 
 
 $("#lunchBox").click(function () {
-    $(".subtitle").text("It's lunch time!");
+    $(".subtitle").text("It's lunch time! Click the buttons below for more options.");
     mealType = "lunch"
     queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=picnic&mealType=" + mealType;
     recipeCall();
@@ -121,7 +122,7 @@ $("#lunchBox").click(function () {
 
 
 $("#dinnerBox").click(function () {
-    $(".subtitle").text("It's dinner time!");
+    $(".subtitle").text("It's dinner time! Click the buttons below for more options.");
     mealType = "dinner"
     queryURL = "https://api.edamam.com/search?q=dinner&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=rolls&excluded=cream&excluded=pancakes&mealType=" + mealType;
     recipeCall();

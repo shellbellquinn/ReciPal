@@ -23,13 +23,15 @@ function recipeCall() {
 
 //see more and see less options on main page
 $("#seeMore").on("click", function () {
+    $(this).hide()
+    $("#seeLess").removeClass('is-hidden')
     $("#seeLess").show()
-    $("#seeMore").hide()
     displayRecipes(12)
 });
 
 $("#seeLess").on("click", function () {
     $(this).hide()
+    $("#seeMore").show()
     displayRecipes(6)
 });
 
@@ -47,9 +49,9 @@ function displayRecipes(num) {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+        <button class="popUp button is-warning is-light"> View Recipe </button>`);
         }
-        $("#seeMore").show()
+        $("#seeMore").removeClass('is-hidden')
     }
 
 
