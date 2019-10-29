@@ -1,88 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/css/OverlayScrollbars.min.css'>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <!-- Bulma Version 0.8.x-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="../css/hero.css"> -->
-    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
-    <!-- add to css -->
-     <style>
-    .columns:nth-child(2)
-    {margin-top: -10rem;}
-    </style> 
-    <title>ReciPal</title>
-  
-    <body>
-    <!--header code-->
-    <section class="hero is-info is-small">
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <p class="title">
-              Recipal
-            </p>
-            <p class="subtitle">
-              Temp text
-            </p>
-          </div>
-        </div>
-      </section>
+var mealType
+var recipes
+var num
+var numToDisplay
+var zeroTest = 0
+var nineTime = moment().set("hour", 9).format("H");
+var tenTime = moment().set("hour", 10).format("H");
+var elevenTime = moment().set("hour", 11).format("H");
+var twelveTime = moment().set("hour", 12).format("H");
+var oneTime = moment().set("hour", 13).format("H");
+var twoTime = moment().set("hour", 14).format("H");
+var threeTime = moment().set("hour", 15).format("H");
+var fourTime = moment().set("hour", 16).format("H");
+var fiveTime = moment().set("hour", 17).format("H");
+var sixTime = moment().set("hour", 18).format("H");
+var sevenTime = moment().set("hour", 19).format("H");
+var eightTime = moment().set("hour", 20).format("H");
 
-      <!--sub header code-->
-      <div class="box cta">
-        <p class="has-text-centered">
-           If you're in the mood for lunch, dinner or a snack click on the button.
-              <button id="breakfastBox">Breakfast</button>
-              <button id="lunchBox">Lunch</button>
-              <button id="dinnerBox">Dinner</button>
-        </p>
-      </div>
-      
-      <div class="searchOption">
-          <a href="search.html"> Advanced Search </a>
-      </div>
-        
+// //console.log(tenTime)
 
-      <!--recommended recipes card container-->
-                <!-- //The page loads to display 6 popular breakfast lunch or dinner foods depending on the time
-                    // use moment.js to determine which mealType is default displayed-->
-
-      <section class="recipeContainer">
-      <div class="columns">
-        <div class="column">
-          <img class="recipeImg">
-          <h2 class="recipeLabel"></h2>
+var hourNow = moment().format('MMMM Do YYYY, HH:mm:ss a')
+var currentHour = moment().format('H')
 
 
-        </div>
-      </div>
-      </section>
-      <a id="seeMore"> See More </a>
-     
+// Creates AJAX call for the specific movie button being clicked
 
-  <!--//I have the choice to switch from breakfast lunch dinner or snack manually and the default display will change to reflect my choice
-    // add event listeners to change the defaul mealType to new mealType when button is clicked
+
+function recipeCall() {
+    $.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (response) {
+    recipes = response;
+    displayRecipes(6)
+});
+}
     
-// If one of those origanal recipes looks good I can click the picture to see more details
-    // add event listener to open the recipe card pop up
-    
-// I also have the option to open a new page to put in search parameters instead of the recommended options
-    // add a button or link to search page
-    
-// future add ons - favorite recipes which will add a recipe card to local storage displayed on a new page 
-// future add ons - share options to share recipe with friends -->
-    
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
-<script src="script.js"></script>
+$('#seeMore').on('click', function () {
+    displayRecipes(12)
+});
 
-</body>
-</html>
+
+
+function displayRecipes(num) {
+    $(".columns").empty();
+    for (var i = 0; i < num; i++) {
+        var recipe = JSON.stringify(recipes.hits[i].recipe.label);
+        var imgSrc = JSON.stringify(recipes.hits[i].recipe.image);
+
+        if (mealType === "breakfast") {
+
+            $('.columns').append(`<div class="column" data-attr="breakfast">
+        <!--Img-->
+             <img class="recipeImg" src= ${imgSrc}>
+         <!--text row-->
+             <h2 class="recipeLabel">${recipe} </h2>
+        <!--button row-->     
+            <button class="popUp"> View Recipe </button>`);
+
+
+        } else if (mealType === "lunch") {
+            $('.columns').append(`<div class="column" data-attr="lunch">
+        <!--Img-->
+             <img class="recipeImg" src= ${imgSrc}>
+         <!--text row-->
+             <h2 class="recipeLabel">${recipe} </h2>
+        <!--button row-->     
+        <button class="popUp"> View Recipe </button>`);
+
+        } else {
+            $('.columns').append(`<div class="column" data-attr={"dinner"}>
+        <!--Img-->
+             <img class="recipeImg" src= ${imgSrc}>
+         <!--text row-->
+             <h2 class="recipeLabel">${recipe} </h2>
+        <!--button row-->     
+        <button class="popUp"> View Recipe </button>`);
+        }
+    }
+}
+
+
+if (currentHour > 0 && currentHour < 11) {
+    $(".subtitle").text("It's breakfast time!")
+    mealType = "breakfast"
+    queryURL = "https://api.edamam.com/search?q=breakfast&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=" + mealType;
+    recipeCall();
+} else if (currentHour >= 11 && currentHour < 16) {
+    $(".subtitle").text("It's lunch time!");
+    mealType = "lunch"
+    queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=" + mealType;
+    recipeCall();
+} else {
+    $(".subtitle").text("It's dinner time!");
+    mealType = "dinner"
+    queryURL = "https://api.edamam.com/search?q=dinner&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=rolls&excluded=icecream&excluded=pancakes&mealType=" + mealType;
+    recipeCall();
+}
+
+
+
+
+$("#breakfastBox").click(function () {
+    $(".subtitle").text("It's breakfast time!")
+    mealType = "breakfast"
+    queryURL = "https://api.edamam.com/search?q=breakfast&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=" + mealType;
+    recipeCall();
+})
+
+
+$("#lunchBox").click(function () {
+    $(".subtitle").text("It's lunch time!");
+    mealType = "lunch"
+    queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=" + mealType;
+    recipeCall();
+})
+
+
+$("#dinnerBox").click(function () {
+    $(".subtitle").text("It's dinner time!");
+    mealType = "dinner"
+    queryURL = "https://api.edamam.com/search?q=dinner&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=rolls&excluded=cream&excluded=pancakes&mealType=" + mealType;
+    recipeCall();
+})
+
