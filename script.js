@@ -1,5 +1,5 @@
 var mealType
-var recipes
+var display
 var num
 var numToDisplay
 var zeroTest = 0
@@ -30,23 +30,40 @@ function recipeCall() {
     url: queryURL,
     method: "GET"
 }).then(function (response) {
-    recipes = response;
+    display = response;
     displayRecipes(6)
 });
 }
     
 
-$('#seeMore').on('click', function () {
+// $.data('notClicked').click(function () {
+//     displayRecipes(12)
+//     $('#seeMore').attr('data-info', 'clicked');
+// });
+
+// $.data('clicked').click(function() {
+//     displayRecipes(6)
+//     $('#seeMore').attr('data-info', 'notClicked');
+// });
+
+$( "#seeMore" ).on( "click", function () {
+    $(this).hide()
+    $("#seeLess").show()
     displayRecipes(12)
 });
 
+$( "#seeLess" ).on( "click", function () {
+    $(this).hide()
+    $("#seeMore").show()
+    displayRecipes(6)
+});
 
 
 function displayRecipes(num) {
     $(".columns").empty();
     for (var i = 0; i < num; i++) {
-        var recipe = JSON.stringify(recipes.hits[i].recipe.label);
-        var imgSrc = JSON.stringify(recipes.hits[i].recipe.image);
+        var recipes = JSON.stringify(display.hits[i].recipe.label);
+        var imgSrc = JSON.stringify(display.hits[i].recipe.image);
 
         if (mealType === "breakfast") {
 
@@ -54,7 +71,7 @@ function displayRecipes(num) {
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel">${recipe} </h2>
+             <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
             <button class="popUp"> View Recipe </button>`);
 
@@ -64,7 +81,7 @@ function displayRecipes(num) {
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel">${recipe} </h2>
+             <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
         <button class="popUp"> View Recipe </button>`);
 
@@ -73,7 +90,7 @@ function displayRecipes(num) {
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel">${recipe} </h2>
+             <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
         <button class="popUp"> View Recipe </button>`);
         }
@@ -89,7 +106,7 @@ if (currentHour > 0 && currentHour < 11) {
 } else if (currentHour >= 11 && currentHour < 16) {
     $(".subtitle").text("It's lunch time!");
     mealType = "lunch"
-    queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=" + mealType;
+    queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=picnic&mealType=" + mealType;
     recipeCall();
 } else {
     $(".subtitle").text("It's dinner time!");
@@ -110,7 +127,7 @@ $("#breakfastBox").click(function () {
 $("#lunchBox").click(function () {
     $(".subtitle").text("It's lunch time!");
     mealType = "lunch"
-    queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType=" + mealType;
+    queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=picnic&mealType=" + mealType;
     recipeCall();
 })
 
