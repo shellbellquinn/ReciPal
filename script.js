@@ -98,7 +98,7 @@ if (currentHour > 0 && currentHour < 11) {
 } else {
     $(".subtitle").text("It's dinner time!");
     mealType = "dinner"
-    queryURL = "https://api.edamam.com/search?q=dinner&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=rolls&excluded=icecream&excluded=pancakes&mealType=" + mealType;
+    queryURL = "https://api.edamam.com/search?q=dinner&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=rolls&excluded=cream&excluded=pancakes&mealType=" + mealType;
     recipeCall();
 }
 
