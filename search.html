@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <!-- <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon"> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel='stylesheet'
@@ -43,6 +44,7 @@
       </div>
 
 
+    <div class="field is-grouped is-grouped-multiline">
       <div class="field">
         <label class="label">Meal Type</label>
         <div class="control">
@@ -63,17 +65,16 @@
         <div class="control">
           <div id="dishType" class="select">
             <select>
-              <option value="null">Side, Entree, Dessert...</option>
-              <option value="appetizer">Appetizer</option>
-              <option value="side">Side</option>
-              <option value="entree">Entree</option>
-              <option value="dessert">Dessert</option>
+              <option value="null">Starter, Main Course, Dessert...</option>
+              <option value="Starter">Starter</option>
+              <option value="Side%20dish">Side Dish</option>
+              <option value="Main%20course">Main Course</option>
+              <option value="Desserts">Desserts</option>
             </select>
           </div>
         </div>
       </div>
-
-
+   
       <div class="field">
         <label class="label">Cuisine Type</label>
         <div class="control">
@@ -105,19 +106,19 @@
       <div class="field">
         <label class="label">Diet Options</label>
         <div class="control">
-          <div class="select">
+          <div id="dietLabels" class="select">
             <select>
-              <option> Low-Carb, Low-Fat, Low-Sodium... </option>
-              <option> High-Fiber </option>
-              <option> High-Protein </option>
-              <option> Low-Carb </option>
-              <option> Low-Fat </option>
-              <option> Low-Sodium </option>
+              <option value="null"> Low-Carb, Low-Fat, Low-Sodium... </option>
+              <option value="high-fiber"> High-Fiber </option>
+              <option value="high-protein"> High-Protein </option>
+              <option value="low-carb"> Low-Carb </option>
+              <option value="low-fat"> Low-Fat </option>
+              <option value="low-sodium"> Low-Sodium </option>
             </select>
           </div>
         </div>
       </div>
-
+    </div>
 
       <b>Dietary Restrictions</b>
       <br>
@@ -206,6 +207,8 @@ details add event listener to open the recipe card pop up-->
       </div>
     </div>
   </section>
+  <a id="seeMore" hidden> See More </a>
+  <a id="seeLess" hidden> See Less </a>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
