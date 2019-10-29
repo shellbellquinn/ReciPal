@@ -128,4 +128,6 @@ $("#dinnerBox").click(function () {
 })
 
 // If one of the recipes looks good I can click the picture to see more details
+
 // add event listener to open the recipe card pop up within the display recipe function-->
+
