@@ -19,41 +19,44 @@
     {margin-top: -10rem;}
     </style> 
     <title>ReciPal</title>
-  
     <body>
     <!--header code-->
-    <section class="hero is-info is-small">
+    <section class="hero is-warning is-small">
         <div class="hero-body">
           <div class="container has-text-centered">
-            <p class="title">
-              Recipal
-            </p>
+              <img src="assets/logo.png" width="300" height="300">
             <p class="subtitle">
               Temp text
             </p>
           </div>
-        </div>
+        </div>  
       </section>
 
       <!--sub header code-->
       <div class="box cta">
         <p class="has-text-centered">
-          <span class="tag is-primary">It's Breakfast Time</span> If you're in the mood for lunch, dinner or a snack click on the button.
-              <button id="breakfastBox">Breakfast</button>
-              <button id="lunchBox">Lunch</button>
-              <button id="dinnerBox">Dinner</button>
+          <span class="button is-warning">It's Breakfast Time!</span>
+          <br> If you're in the mood for lunch, dinner or a snack click on the button.
+
+      <!--Buttons for me to pick another dish type-->
+        <!--//I have the choice to switch from breakfast lunch dinner or snack manually and the default display will change to reflect my choice
+    // add event listeners to change the defaul mealType to new mealType when button is clicked-->
+          <button class="button is-warning">Breakfast</button> 
+          <button class="button is-warning">Lunch</button> 
+          <button class="button is-warning">Dinner</button>
         </p>
       </div>
-      
+    <!--button /link that wil lead me to the search page-->
       <div class="searchOption">
           <a href="search.html"> Advanced Search </a>
       </div>
         
 
-      <!--recommended recipes card container-->
+    <!--recommended recipes card container-->
                 <!-- //The page loads to display 6 popular breakfast lunch or dinner foods depending on the time
                     // use moment.js to determine which mealType is default displayed-->
-
+    <!--// If one of those origanal recipes looks good I can click the picture to see more details
+    // add event listener to open the recipe card pop up-->
       <section class="recipeContainer">
       <div class="columns">
         <div class="column">
@@ -66,11 +69,7 @@
 
      
 
-  <!--//I have the choice to switch from breakfast lunch dinner or snack manually and the default display will change to reflect my choice
-    // add event listeners to change the defaul mealType to new mealType when button is clicked
-    
-// If one of those origanal recipes looks good I can click the picture to see more details
-    // add event listener to open the recipe card pop up
+<!---
     
 // I also have the option to open a new page to put in search parameters instead of the recommended options
     // add a button or link to search page
