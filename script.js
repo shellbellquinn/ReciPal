@@ -1,61 +1,68 @@
-var mealType 
-//$(this).attr("data-attr");
-// var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
+var mealType
+var recipes
+var numToDisplay
+var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
 
-// // Creates AJAX call for the specific movie button being clicked
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).then(function (response) {
-
-
-    // for (var i = 0; i < 6; i++) {
-    //     var recipe = JSON.stringify(response.hits[i].recipe.label);
-    //     var imgSrc = JSON.stringify(response.hits[i].recipe.image);
-
-    //     if (mealType === "breakfast") {
-
-    //         $('.columns').append(`<div class="column" data-attr="breakfast">
-    //     <!--Img-->
-    //          <img class="recipeImg" src= ${imgSrc}>
-
-    //      <!--text row-->
-    //          <h2 class="recipeLabel">${recipe} </h2>
-
-    //     <!--button row-->     
-    //     <button class="popUp"> View Recipe </button>`);
-
-      
+// Creates AJAX call for the specific movie button being clicked
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (response) {
+   recipes = response;
+   displayRecipes(6)
+});
 
 
-//         } else if (mealType === "lunch") {
-//             $('.columns').append(`<div class="column" data-attr="lunch">
-//         <!--Img-->
-//              <img class="recipeImg" src= ${imgSrc}>
+$('#seeMore').on('click', function() {
+    displayRecipes(12)
+  });
 
-//          <!--text row-->
-//              <h2 class="recipeLabel">${recipe} </h2>
-//         <!--button row-->     
-//         <button class="popUp"> View Recipe </button>`);
+function displayRecipes(num) {
+    numToDisplay += num 
+    $( ".columns" ).empty();
+    for (var i = 0; i < num; i++) {
+        var recipe = JSON.stringify(recipes.hits[i].recipe.label);
+        var imgSrc = JSON.stringify(recipes.hits[i].recipe.image);
 
-//         } else {
-//             $('.columns').append(`<div class="column" data-attr="dinner">
-//         <!--Img-->
-//              <img class="recipeImg" src= ${imgSrc}>
+        if (mealType === "breakfast") {
 
-//          <!--text row-->
-//              <h2 class="recipeLabel">${recipe} </h2>
-//         <!--button row-->     
-//         <button class="popUp"> View Recipe </button>`);
-//         }
-//     }
+            $('.columns').append(`<div class="column" data-attr="breakfast">
+        <!--Img-->
+             <img class="recipeImg" src= ${imgSrc}>
 
+         <!--text row-->
+             <h2 class="recipeLabel">${recipe} </h2>
 
-// })
+        <!--button row-->     
+            <button class="popUp"> View Recipe </button>`);
 
 
+        } else if (mealType === "lunch") {
+            $('.columns').append(`<div class="column" data-attr="lunch">
+        <!--Img-->
+             <img class="recipeImg" src= ${imgSrc}>
 
- // moment meal suggestion 
+         <!--text row-->
+             <h2 class="recipeLabel">${recipe} </h2>
+        <!--button row-->     
+        <button class="popUp"> View Recipe </button>`);
+
+        } else {
+            $('.columns').append(`<div class="column" data-attr="dinner">
+        <!--Img-->
+             <img class="recipeImg" src= ${imgSrc}>
+
+         <!--text row-->
+             <h2 class="recipeLabel">${recipe} </h2>
+        <!--button row-->     
+        <button class="popUp"> View Recipe </button>`);
+        }
+    }
+}
+
+
+
+
  var zeroTest = 0
  var nineTime = moment().set("hour", 9).format("H");
  var tenTime = moment().set("hour", 10).format("H");
@@ -164,10 +171,7 @@ else if (currentHour >= 11 && currentHour < 16) {
         })
     }
  
-//click listener for meal time buttons
-//breakfast button
-// .then(function (response) {
-// $(‘#breakfast’).click(function() {
+
 
 
 
@@ -266,6 +270,4 @@ else if (currentHour >= 11 && currentHour < 16) {
     
 
 
-// //click listener for see more 
 
-// click listener 
