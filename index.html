@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
     <!-- <link rel="stylesheet" type="text/css" href="../css/hero.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
-    <!-- add to css -->
-    <link rel="stylesheet" href="/assets/CSS/bulma.css"> 
+ 
      <style>
     .columns:nth-child(2)
     {margin-top: -10rem;}
@@ -36,15 +35,14 @@
       <div class="box cta">
         <p class="has-text-centered">
 
-          <span class="button is-warning">It's Breakfast Time!</span>
           <br> If you're in the mood for breakfast, lunch, or dinner click on the button.
 
       <!--Buttons for me to pick another dish type-->
         <!--//I have the choice to switch from breakfast lunch dinner or snack manually and the default display will change to reflect my choice
     // add event listeners to change the defaul mealType to new mealType when button is clicked-->
-          <button class="button is-warning">Breakfast</button> 
-          <button class="button is-warning">Lunch</button> 
-          <button class="button is-warning">Dinner</button>
+          <button id="breakfastBox" class="button is-warning">Breakfast</button> 
+          <button id="lunchBox" class="button is-warning">Lunch</button> 
+          <button id="dinnerBox" class="button is-warning">Dinner</button>
 
      
       </div>
