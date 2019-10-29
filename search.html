@@ -1,88 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <!-- <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon"> -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/css/OverlayScrollbars.min.css'>
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-   <!-- Bulma Version 0.8.x-->
-   <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
-   <!-- <link rel="stylesheet" type="text/css" href="../css/hero.css"> -->
-   <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
-   <!-- add to css -->
-    <style>
-   .columns:nth-child(2)
-   {margin-top: -10rem;}
-   </style> 
-   <title>Search recipes</title>
-    </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/css/OverlayScrollbars.min.css'>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Bulma Version 0.8.x-->
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="../css/hero.css"> -->
+  <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+  <title>ReciPal</title>
+
 <body>
-<!--header on this page looks the same except it doesnt have the breakfast lunch or dinner option 
-in the header copy header html from index page-->
-<section class="hero is-warning is-small">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <img src="assets/logo.png" width="300" height="300">
-<!---SUBTITLE GOES HERE -->
-      <p class="subtitle"></p>
+  <!--header code-->
+  <section class="hero is-warning is-small">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="assets/logo.png" width="300" height="300">
+        <p class="subtitle">
+          Now We're Cooking!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- I can search for recipes using a form that allows me to select meal type, dish type, diet, health, and exclusions.
+    user input is in a drop down function, create event listeners for each-->
+  <div class="container">
+    <div class="notification">
+
+      <div class="field">
+        <label class="label">Search</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="What are you craving?">
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label class="label">Meal Type</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Breakfast, Lunch, Dinner...</option>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Dinner</option>
+              <option>Snack</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Dish Type</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Side, Entree, Dessert...</option>
+              <option>Appetizer</option>
+              <option>Side</option>
+              <option>Entree</option>
+              <option>Dessert</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label class="label">Cuisine Type</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option> Chinese, Italian, Mexican... </option>
+              <option> American </option>
+              <option> Asian </option>
+              <option> British </option>
+              <option> Caribbean </option>
+              <option> Central Europe </option>
+              <option> Chinese </option>
+              <option> Eastern Europe </option>
+              <option> French </option>
+              <option> Indian </option>
+              <option> Italian </option>
+              <option> Japanese </option>
+              <option> Mediterranean </option>
+              <option> Mexican </option>
+              <option> Middle Eastern </option>
+              <option> Nordic </option>
+              <option> South American </option>
+              <option> South East Asian </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Diet Options</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option> Low-Carb, Low-Fat, Low-Sodium... </option>
+              <option> High-Fiber </option>
+              <option> High-Protein </option>
+              <option> Low-Carb </option>
+              <option> Low-Fat </option>
+              <option> Low-Sodium </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <b>Dietary Restrictions</b>
+      <br>
+      <label class="checkbox">
+        <input type="checkbox">
+        Dairy-free
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Gluten-free
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Keto-friendly
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Kosher
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Paleo
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Peanut-free
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Pork-free
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Shellfish-free
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Soy-free
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Tree-nut-Free
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Vegan
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox">
+        Vegetarian
+      </label>
+      <br>
+      <br>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-warning">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-warning is-light">Cancel</button>
+        </div>
+      </div>
+
     </div>
   </div>
-</section>
-<!-- I can search for recipes using a form that allows me to select meal type, dish type, diet, health, and exclusions.
-    user input is in a drop down function, create event listeners for each to assign the-->
-                <hr class="my-4" />
-                <div class="card">
-                      <div class="card-header">
-                       Search Parameters
-                      </div>
-                      <div class="card-body">
-                        <form>
-                              <div class="form-group">
-                                <label for="formGroupExampleInput">Meal Type:</label><!---such as Breakfast Lunch Dinner and Snack-->
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-                              </div>
-                              <div class="form-group">
-                                <label for="formGroupExampleInput2"> Dish Type:</label><!---such as Side dish, Main Dish, Entrees, appetizers, dessert  -->
-                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-                              </div>
-                              <div class="form-group">
-                                      <label for="formGroupExampleInput2"> Cusine Type:</label> <!---such as “cuisineType=chinese cuisineType=indian”-->
-                                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-                                    </div>
-                                    <div class="form-group">
-                                          <label for="formGroupExampleInput2">Health Restrictions</label><!---such as peanut-free or tree-nut free or gluten-free-->
-                                          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-                                        </div>
-                                    <div class="form-group">
-                                                <label for="formGroupExampleInput2">Exclusion</label> 
-                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-                                        </div>
-<!--I press submit and the recipes populate below the search form
-add event listener to the submit recipe to show result container-->
-<button class="button is-warning is-active">Search/Submit </button> 
-<button class="button is-warning is-active">Search/Submit </button> 
-                            </form>
-                      </div>
-                    </div>
-                    <br/>
-<!---If one of those searched recipes looks good I can click the picture to see more 
+
+  <!---If one of those searched recipes looks good I can click the picture to see more 
 details add event listener to open the recipe card pop up-->
-                    <div class="card">
-                          <div class="card-header">
-                           Top Recipes
-                          </div>
-                          <div class="card-body">
-                           <div></div>
-                       </div>
-                  </div>
-                 </div>
-              </div>
-<!--
+  <section class="searchRecipeContainer">
+    <h3>Recipe Results</h3>
+    <div class="columns">
+      <div class="column">
+        <img class="searchRecipeImg">
+        <h2 class="searchRecipeLabel"></h2>
+      </div>
+    </div>
+  </section>
+
+  <!--
  future add ons - favorite recipes from the pop up function which will add a recipe card to local storage displayed on a new page 
  future add ons - load more options that will display six more default recommended recipes
  future add ons - share options to share recipe with friends -->
 </body>
+
 </html>
