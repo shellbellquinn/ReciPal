@@ -17,7 +17,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             display = response;
-            displayRecipes(6)
+            displayRecipes(4)
         });
     }
 
@@ -32,10 +32,10 @@ $(document).ready(function () {
     $("#seeLess").on("click", function () {
         $(this).hide()
         $("#seeMore").show()
-        displayRecipes(6)
+        displayRecipes(4)
     });
 
-    //The page loads to display 6 or 12 popular breakfast lunch or dinner foods depending on the time and buttons pressed
+    //The page loads to display 4 or 12 popular breakfast lunch or dinner foods depending on the time and buttons pressed
     function displayRecipes(num) {
         $(".columns").empty();
         for (var i = 0; i < num; i++) {
@@ -43,13 +43,13 @@ $(document).ready(function () {
             var imgSrc = JSON.stringify(display.hits[i].recipe.image);
 
 
-            $('.columns').append(`<div class="column" data-attr={"dinner"}>
+            $('.columns').append(`<div class="column is-one-quarter">
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp button is-warning is-light"> View Recipe </button>`);
+            <button class="popUp button is-warning is-light"> View Recipe </button>`);
         }
         $("#seeMore").removeClass('is-hidden')
     }
