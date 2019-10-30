@@ -102,7 +102,7 @@ $(document).ready(function () {
     } else if (currentHour >= 11 && currentHour < 16) {
         $(".subtitle").text("It's lunch time! Click the buttons below for more options.");
         mealType = "lunch"
-        queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=picnic&mealType=" + mealType;
+        queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=sack&excluded=picnic&excluded=Chipped&mealType=" + mealType;
         recipeCall();
     } else {
         $(".subtitle").text("It's dinner time! Click the buttons below for more options.");
@@ -124,7 +124,7 @@ $(document).ready(function () {
     $("#lunchBox").click(function () {
         $(".subtitle").text("It's lunch time! Click the buttons below for more options.");
         mealType = "lunch"
-        queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=picnic&mealType=" + mealType;
+        queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=sack&excluded=picnic&excluded=Chipped&mealType=" + mealType;
         recipeCall();
     })
 
