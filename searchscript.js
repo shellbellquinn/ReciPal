@@ -39,7 +39,7 @@ $(document).ready(function () {
         for (var i = 0; i < num; i++) {
             var recipes = JSON.stringify(display.hits[i].recipe.label);
             var imgSrc = JSON.stringify(display.hits[i].recipe.image);
-
+            var link = JSON.stringify(display.hits[i].recipe.url);
 
             $('.columns').append(`<div class="column is-full-mobile is-one-quarter-desktop">
         <!--Img-->
@@ -47,8 +47,10 @@ $(document).ready(function () {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-            <button class="popUp button is-warning is-light"> View Recipe </button>`);
-        }
+            <a href= ${link} target="_blank">
+            <button class="popUp button is-warning is-light"> View Recipe </button>
+            </a>`);
+            }
         $("#seeMore").removeClass('is-hidden')
         $("#seeMore").show()
         $("#seeLess").hide()

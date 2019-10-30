@@ -52,6 +52,8 @@ $(document).ready(function () {
         for (var i = 0; i < num; i++) {
             var recipes = JSON.stringify(display.hits[i].recipe.label);
             var imgSrc = JSON.stringify(display.hits[i].recipe.image);
+            var link = JSON.stringify(display.hits[i].recipe.url);
+
 
             if (mealType === "breakfast") {
 
@@ -61,7 +63,9 @@ $(document).ready(function () {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-            <button class="popUp button is-warning is-light"> View Recipe </button>`);
+            <a href= ${link} target="_blank">
+            <button class="popUp button is-warning is-light"> View Recipe </button>
+            </a>`);
 
 
             } else if (mealType === "lunch") {
@@ -71,7 +75,9 @@ $(document).ready(function () {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp button is-warning is-light"> View Recipe </button>`);
+            <a href= ${link} target="_blank">
+            <button class="popUp button is-warning is-light"> View Recipe </button>
+            </a>`);
 
             } else {
                 $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile" data-attr={"dinner"}>
@@ -80,7 +86,9 @@ $(document).ready(function () {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp button is-warning is-light"> View Recipe </button>`);
+            <a href= ${link} target="_blank">
+            <button class="popUp button is-warning is-light"> View Recipe </button>
+            </a>`);
             }
         }
     }
