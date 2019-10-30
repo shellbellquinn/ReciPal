@@ -50,6 +50,8 @@ $(document).ready(function () {
             <button class="popUp button is-warning is-light"> View Recipe </button>`);
         }
         $("#seeMore").removeClass('is-hidden')
+        $("#seeMore").show()
+        $("#seeLess").hide()
     }
 
 
