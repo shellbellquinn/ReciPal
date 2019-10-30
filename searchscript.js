@@ -41,7 +41,7 @@ $(document).ready(function () {
             var imgSrc = JSON.stringify(display.hits[i].recipe.image);
 
 
-            $('.columns').append(`<div class="column is-one-quarter">
+            $('.columns').append(`<div class="column is-full-mobile is-one-quarter-desktop">
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->

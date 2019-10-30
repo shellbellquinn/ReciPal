@@ -55,7 +55,7 @@ $(document).ready(function () {
 
             if (mealType === "breakfast") {
 
-                $('.columns').append(`<div class="column is-one-quarter" data-attr="breakfast">
+                $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile" data-attr="breakfast">
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
@@ -65,7 +65,7 @@ $(document).ready(function () {
 
 
             } else if (mealType === "lunch") {
-                $('.columns').append(`<div class="column is-one-quarter" data-attr="lunch">
+                $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile" data-attr="lunch">
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
@@ -74,7 +74,7 @@ $(document).ready(function () {
         <button class="popUp button is-warning is-light"> View Recipe </button>`);
 
             } else {
-                $('.columns').append(`<div class="column is-one-quarter" data-attr={"dinner"}>
+                $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile" data-attr={"dinner"}>
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
