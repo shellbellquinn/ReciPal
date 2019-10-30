@@ -61,7 +61,7 @@ $(document).ready(function () {
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel">${recipes} </h2>
+             <h2 class="recipeLabel has-text-weight-semibold is-uppercase has-text-danger has-text-centered">${recipes} </h2>
         <!--button row-->     
             <a class="buttons has-addons is-centered" href= ${link} target="_blank">
             <button class="popUp button is-warning is-light"> View Recipe </button>
@@ -84,7 +84,7 @@ $(document).ready(function () {
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel has-text-weight-semibold">${recipes} </h2>
+             <h2 class="recipeLabel has-text-weight-semibold is-uppercase has-text-danger has-text-centered">${recipes} </h2>
         <!--button row-->     
             <a class="buttons has-addons is-centered" href= ${link} target="_blank">
             <button class="popUp button is-warning is-light"> View Recipe </button>
