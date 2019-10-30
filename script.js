@@ -37,7 +37,13 @@ $(document).ready(function () {
         $(this).hide()
         $("#seeLess").removeClass('is-hidden')
         $("#seeLess").show()
-        displayRecipes(12)
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            display = response;
+            displayRecipes(12)
+        });
     });
 
     $("#seeLess").on("click", function () {
@@ -57,9 +63,9 @@ $(document).ready(function () {
 
             if (mealType === "breakfast") {
 
-                $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile" data-attr="breakfast">
+                $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile has-addons-centered" data-attr="breakfast">
         <!--Img-->
-             <img class="recipeImg" src= ${imgSrc}>
+             <img class="recipeImg has-addons-centered" src= ${imgSrc}>
          <!--text row-->
              <h2 class="recipeLabel has-text-weight-semibold is-uppercase has-text-danger has-text-centered">${recipes} </h2>
         <!--button row-->     
