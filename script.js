@@ -2,16 +2,22 @@ var mealType
 //$(this).attr("data-attr");
 var queryURL = "https://api.edamam.com/search?q=" + mealType + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&mealType" + mealType;
 
+
 // Creates AJAX call for the specific movie button being clicked
 $.ajax({
     url: queryURL,
     method: "GET"
 }).then(function (response) {
 
-
     for (var i = 0; i < 6; i++) {
         var recipe = JSON.stringify(response.hits[i].recipe.label);
         var imgSrc = JSON.stringify(response.hits[i].recipe.image);
+        var recipeSource = JSON.stringify(response.hits[i].recipe.source);
+        var recipeLink = JSON.stringify(response.hits[i].recipe.url)
+        var dietRestrict = JSON.stringify(response.hits[i].recipe.cautions);
+        var ingredients = JSON.stringify(response.hits[i].recipe.ingredientLines[i]);
+       
+       
 
         if (mealType === "breakfast") {
 
@@ -23,7 +29,7 @@ $.ajax({
              <h2 class="recipeLabel">${recipe} </h2>
 
         <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+        <button class="popUp" data-stuff=${recipe} data-source=${recipeSource} data-restriction=${dietRestrict} data-ingredient=${ingredients} data-link=${recipeLink}> View Recipe </button>`);
 
       
 
@@ -36,7 +42,7 @@ $.ajax({
          <!--text row-->
              <h2 class="recipeLabel">${recipe} </h2>
         <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+        <button class="popUp" data-stuff=${recipe} data-source=${recipeSource} data-restriction=${dietRestrict} data-ingredient=${ingredients} data-link=${recipeLink}}"> View Recipe </button>`);
 
         } else {
             $('.columns').append(`<div class="column" data-attr="dinner">
@@ -46,11 +52,31 @@ $.ajax({
          <!--text row-->
              <h2 class="recipeLabel">${recipe} </h2>
         <!--button row-->     
-        <button class="popUp"> View Recipe </button>`);
+        <button class="popUp" data-stuff=${recipe} data-source=${recipeSource} data-restriction=${dietRestrict} data-ingredient=${ingredients} data-link=${recipeLink}> View Recipe </button>`);
         }
+       
+       
     }
+    // click lisener for recipe modal display
+    $(".popUp").on("click", function () {
+        // variables based on data attributes
+        var restrictData = $(this).data("restriction");
+        var sourceData = $(this).data("source");
+        var ingredientData = $(this).data("ingredient");
+        var linkData = $(this).data("link")
+        
+        // What's actually written in the modal
+        $(".modal-content").css("display", "block").html("Source: " + sourceData + "<br>" + "Ingredients: " + ingredientData + "<br>" + "Dietary Restrictions: " + restrictData + "<br>" + "Get the Recipe! " + linkData +"<br>" + "click to close<br>");
 
+        console.log(ingredientData)
+        });
 
+        // closes the modal by clicking on it
+     $("#recipeModal").on("click", function () {
+        $(this).hide();
+        })
+    
+    
 })
 
 

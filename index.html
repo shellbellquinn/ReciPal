@@ -12,11 +12,14 @@
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
     <!-- <link rel="stylesheet" type="text/css" href="../css/hero.css"> -->
     <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+
+    <link rel="stylesheet" href="./Assets/CSS/style.css">
     <!-- add to css -->
      <style>
     .columns:nth-child(2)
     {margin-top: -10rem;}
     </style> 
+  
     <title>ReciPal</title>
   
     <body>
@@ -58,7 +61,11 @@
         <div class="column">
           <img class="recipeImg">
           <h2 class="recipeLabel"></h2>
-
+        
+          <div id="recipeModal" class="modal has-text-centered">
+            <div id ="modalInternal" class="modal-content"></div>
+          </div>
+        </div>
         </div>
       </div>
       </section>
