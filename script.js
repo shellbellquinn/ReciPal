@@ -2,8 +2,6 @@ $(document).ready(function () {
 
     var mealType
     var display
-    var num
-    var numToDisplay
 
     //moment variables
     var zeroTest = 0
