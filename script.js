@@ -66,7 +66,7 @@ $.ajax({
         var linkData = $(this).data("link")
         
         // What's actually written in the modal
-        $(".modal-content").css("display", "block").html("Source: " + sourceData + "<br>" + "Ingredients: " + ingredientData + "<br>" + "Dietary Restrictions: " + restrictData + "<br>" + "Get the Recipe! " + linkData +"<br>" + "click to close<br>");
+        $(".modal-wrap").css("display", "block").html("Source: " + sourceData + "<br>" + "Ingredients: " + ingredientData + "<br>" + "Dietary Restrictions: " + restrictData + "<br>" + "Get the Recipe! " + linkData +"<br>" + "click to close<br>");
 
         console.log(ingredientData)
         });

@@ -1,0 +1,8 @@
+.modal-wrap{
+    display: none;
+    background-color: lightblue;
+    position: fixed;
+    z-index: 1;
+    margin: auto;
+
+}
