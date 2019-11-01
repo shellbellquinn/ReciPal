@@ -30,7 +30,9 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             display = response;
+            
             displayRecipes(6)
+            
         });
     }
 
@@ -50,10 +52,15 @@ $(document).ready(function () {
 
     //The page loads to display 6 or 12 popular breakfast lunch or dinner foods depending on the time and buttons pressed
     function displayRecipes(num) {
+        
         $(".columns").empty();
         for (var i = 0; i < num; i++) {
             var recipes = JSON.stringify(display.hits[i].recipe.label);
             var imgSrc = JSON.stringify(display.hits[i].recipe.image);
+            var recipeLink = JSON.stringify(display.hits[i].recipe.url)
+            var dietRestrict = JSON.stringify(display.hits[i].recipe.cautions);
+            var ingredients = JSON.stringify(display.hits[i].recipe.ingredientLines[i]);
+            var recipeSource = JSON.stringify(display.hits[i].recipe.source);
 
             if (mealType === "breakfast") {
 
@@ -63,7 +70,7 @@ $(document).ready(function () {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-            <button class="popUp button is-warning is-light"> View Recipe </button>`);
+            <button class="popUp button is-warning is-light" ata-help=${recipes} data-restriction=${dietRestrict} data-source=${recipeSource} data-ingredient${ingredients} data-link=${recipeLink}> View Recipe </button>`);
 
 
             } else if (mealType === "lunch") {
@@ -73,7 +80,7 @@ $(document).ready(function () {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp button is-warning is-light"> View Recipe </button>`);
+        <button class="popUp button is-warning is-light" ata-help=${recipes} data-restriction=${dietRestrict} data-source=${recipeSource} data-ingredient${ingredients} data-link=${recipeLink}> View Recipe </button>`);
 
             } else {
                 $('.columns').append(`<div class="column" data-attr={"dinner"}>
@@ -82,9 +89,23 @@ $(document).ready(function () {
          <!--text row-->
              <h2 class="recipeLabel">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp button is-warning is-light"> View Recipe </button>`);
+        <button class="popUp button is-warning is-light" data-help=${recipes} data-restriction=${dietRestrict} data-source=${recipeSource} data-ingredient${ingredients} data-link=${recipeLink}> View Recipe </button>`);
             }
+           
         }
+        $(".popUp").on("click", function (){
+            var stuffData = $(this).data("help") 
+            var restrictData = $(this).data("restriction");
+            var sourceData = $(this).data("source");
+            var ingredientData = $(this).data("ingredient");
+            var linkData = $(this).data("link")
+            console.log(stuffData)
+            $(this).show()
+            $("#recipeShow").html("Source: " + sourceData + "<br>" + "Ingredients: " + ingredientData + "<br>" + "Dietary Restrictions: " + restrictData + "<br>" + "Get the Recipe! " + linkData +"<br>" + "click to close<br>")
+        })
+        $("#recipeShow").on("click", function (){
+            $(this).hide();
+        })
     }
 
     // use moment.js to determine which mealType is default displayed-->
@@ -129,6 +150,8 @@ $(document).ready(function () {
         queryURL = "https://api.edamam.com/search?q=dinner&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=rolls&excluded=cream&excluded=pancakes&mealType=" + mealType;
         recipeCall();
     })
+
+   
 
     // If one of the recipes looks good I can click the picture to see more details
 
