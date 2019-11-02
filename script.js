@@ -33,7 +33,9 @@ $(document).ready(function () {
             
             displayRecipes(6)
             
+            
         });
+      
     }
 
     //see more and see less options on main page
@@ -95,7 +97,7 @@ $(document).ready(function () {
         }
 
         // Listener for View Recipe click
-        $(".popUp").on("click", function recipeInfo (){
+        $(".popUp").on("click", function (){
             var stuffData = $(this).data("help") 
             var restrictData = $(this).data("restriction");
             var sourceData = $(this).data("source");
@@ -103,16 +105,16 @@ $(document).ready(function () {
             var linkData = $(this).data("link")
             console.log(stuffData)
             $(this).show()
-            $("#recipeShow").html("Source: " + sourceData + "<br>" + "Dietary Restrictions: " + restrictData + "<br>" + "Get the Recipe! " + linkData +"<br>" + "--double click to close--<br>");
+            $("#recipeShow").html("Source: " + sourceData + "<br>" + "Dietary Restrictions: " + restrictData + "<br>" + "Get the Recipe! " + linkData +"<br>");
             
         })
-
-        $("#recipeShow").on("dblclick", function (){
-            $(this).hide();
+        // hides recipe info on double click.
+        // $("#recipeShow").on("dblclick", function (){
+        //     $(this).hide();
             
 
-        })
-        recipeInfo(),   
+        // })
+         
     }
     
 
