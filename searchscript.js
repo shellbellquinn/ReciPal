@@ -2,8 +2,6 @@ $(document).ready(function () {
 
     var mealType
     var display
-    var num
-    var numToDisplay
     var q
     var dishType
     var queryURL
@@ -17,7 +15,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             display = response;
-            displayRecipes(6)
+            displayRecipes(4)
         });
     }
 
@@ -32,26 +30,30 @@ $(document).ready(function () {
     $("#seeLess").on("click", function () {
         $(this).hide()
         $("#seeMore").show()
-        displayRecipes(6)
+        displayRecipes(4)
     });
 
-    //The page loads to display 6 or 12 popular breakfast lunch or dinner foods depending on the time and buttons pressed
+    //The page loads to display 4 or 12 popular breakfast lunch or dinner foods depending on the time and buttons pressed
     function displayRecipes(num) {
         $(".columns").empty();
         for (var i = 0; i < num; i++) {
             var recipes = JSON.stringify(display.hits[i].recipe.label);
             var imgSrc = JSON.stringify(display.hits[i].recipe.image);
+            var link = JSON.stringify(display.hits[i].recipe.url);
 
-
-            $('.columns').append(`<div class="column" data-attr={"dinner"}>
+            $('.columns').append(`<div class="column is-full-mobile is-one-quarter-desktop">
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel">${recipes} </h2>
+             <h2 class="recipeLabel has-text-weight-semibold is-uppercase has-text-danger has-text-centered">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp button is-warning is-light"> View Recipe </button>`);
-        }
+            <a class="buttons has-addons is-centered" href= ${link} target="_blank">
+            <button class="popUp button is-warning is-light"> View Recipe </button>
+            </a>`);
+            }
         $("#seeMore").removeClass('is-hidden')
+        $("#seeMore").show()
+        $("#seeLess").hide()
     }
 
 

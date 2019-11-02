@@ -2,8 +2,6 @@ $(document).ready(function () {
 
     var mealType
     var display
-    var num
-    var numToDisplay
 
     //moment variables
     var zeroTest = 0
@@ -30,10 +28,12 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             display = response;
+
             
             displayRecipes(6)
             
             
+
         });
       
     }
@@ -43,55 +43,77 @@ $(document).ready(function () {
         $(this).hide()
         $("#seeLess").removeClass('is-hidden')
         $("#seeLess").show()
-        displayRecipes(12)
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            display = response;
+            displayRecipes(12)
+        });
     });
 
     $("#seeLess").on("click", function () {
         $(this).hide()
         $("#seeMore").show()
-        displayRecipes(6)
+        displayRecipes(4)
     });
 
-    //The page loads to display 6 or 12 popular breakfast lunch or dinner foods depending on the time and buttons pressed
+    //The page loads to display 4 or 16 popular breakfast lunch or dinner foods depending on the time and buttons pressed
     function displayRecipes(num) {
         
         $(".columns").empty();
         for (var i = 0; i < num; i++) {
             var recipes = JSON.stringify(display.hits[i].recipe.label);
             var imgSrc = JSON.stringify(display.hits[i].recipe.image);
+
             var recipeLink = JSON.stringify(display.hits[i].recipe.url)
             var dietRestrict = JSON.stringify(display.hits[i].recipe.cautions);
             var ingredients = JSON.stringify(display.hits[i].recipe.ingredientLines[i]);
             var recipeSource = JSON.stringify(display.hits[i].recipe.source);
 
+
             if (mealType === "breakfast") {
 
-                $('.columns').append(`<div class="column" data-attr="breakfast">
+                $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile has-addons-centered" data-attr="breakfast">
         <!--Img-->
-             <img class="recipeImg" src= ${imgSrc}>
+             <img class="recipeImg has-addons-centered" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel">${recipes} </h2>
+             <h2 class="recipeLabel has-text-weight-semibold is-uppercase has-text-danger has-text-centered">${recipes} </h2>
         <!--button row-->     
-            <button class="popUp button is-warning is-light" ata-help=${recipes} data-restriction=${dietRestrict} data-source=${recipeSource} data-ingredient${ingredients} data-link=${recipeLink}> View Recipe </button>`);
+
+
+            <a class="buttons has-addons is-centered" href= ${link} target="_blank">
+            <button class="popUp button is-warning is-light"> View Recipe </button>
+            </a>`);
+
 
 
             } else if (mealType === "lunch") {
-                $('.columns').append(`<div class="column" data-attr="lunch">
+                $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile" data-attr="lunch">
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel">${recipes} </h2>
+             <h2 class="recipeLabel has-text-weight-semibold is-uppercase has-text-danger has-text-centered">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp button is-warning is-light" ata-help=${recipes} data-restriction=${dietRestrict} data-source=${recipeSource} data-ingredient${ingredients} data-link=${recipeLink}> View Recipe </button>`);
+
+            <a class="buttons has-addons is-centered" href= ${link} target="_blank">
+            <button class="popUp button is-warning is-light"> View Recipe </button>
+            </a>`);
 
             } else {
-                $('.columns').append(`<div class="column" data-attr={"dinner"}>
+                $('.columns').append(`<div class="column is-one-quarter-desktop is-full-mobile" data-attr={"dinner"}>
         <!--Img-->
              <img class="recipeImg" src= ${imgSrc}>
          <!--text row-->
-             <h2 class="recipeLabel">${recipes} </h2>
+             <h2 class="recipeLabel has-text-weight-semibold is-uppercase has-text-danger has-text-centered">${recipes} </h2>
         <!--button row-->     
-        <button class="popUp button is-warning is-light" data-help=${recipes} data-restriction=${dietRestrict} data-source=${recipeSource} data-ingredient${ingredients} data-link=${recipeLink}> View Recipe </button>`);
+
+
+
+            <a class="buttons has-addons is-centered" href= ${link} target="_blank">
+            <button class="popUp button is-warning is-light"> View Recipe </button>
+            </a>`);
+
             }
            
         }
@@ -127,7 +149,7 @@ $(document).ready(function () {
     } else if (currentHour >= 11 && currentHour < 16) {
         $(".subtitle").text("It's lunch time! Click the buttons below for more options.");
         mealType = "lunch"
-        queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=picnic&mealType=" + mealType;
+        queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=sack&excluded=picnic&excluded=Chipped&mealType=" + mealType;
         recipeCall();
     } else {
         $(".subtitle").text("It's dinner time! Click the buttons below for more options.");
@@ -149,7 +171,7 @@ $(document).ready(function () {
     $("#lunchBox").click(function () {
         $(".subtitle").text("It's lunch time! Click the buttons below for more options.");
         mealType = "lunch"
-        queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=picnic&mealType=" + mealType;
+        queryURL = "https://api.edamam.com/search?q=lunch&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D&excluded=crudites&excluded=sack&excluded=picnic&excluded=Chipped&mealType=" + mealType;
         recipeCall();
     })
 
