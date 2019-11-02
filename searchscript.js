@@ -60,6 +60,8 @@ $(document).ready(function () {
     //find q
     $("#submit").click(function findQ() {
         //check for q
+      
+        console.log("You clicked submit");
         if ($("#search").val() === "") {
             $("#searchError").html("*This feild is required.");
         } else {
@@ -89,47 +91,69 @@ $(document).ready(function () {
     //find healthLabels
     function findDiet() {
         dietLabels = $("#dietLabels").find("option:selected").val();
-        buildQuery();
+        findDairy();
     }
+    
+    //find Dairy-free
+      function findDairy() {
+       checkbox = $("#dairy-free").find("option:selected").val();
+       buildQuery();
+   }
 
     //build query url based on form inputs
     function buildQuery() {
+        var checkbox = $("#check").prop("checked");
+        // console.log(checkbox);
+        // add into queryURL strings of checkbox data stufff, remove or add strings via checkboxes
         queryURL = "https://api.edamam.com/search?q=" + q + "&app_id=$%7B12fc1523%7D&app_key=$%7B97aee21b6757a0b5b1eade0f194a5c24%7D"
         if (mealType === "null") {
             queryURL = queryURL
-            recipeCall()
+            // recipeCall()
         }
         if (mealType !== "null") {
             queryURL = queryURL + "&mealType=" + mealType
-            recipeCall()
+            // recipeCall()
         }
         if (dishType === "null") {
             queryURL = queryURL
-            recipeCall()
+            // recipeCall()
         }
         if (dishType !== "null") {
             queryURL = queryURL + "&dishType=" + dishType
-            console.log(dishType)
-            recipeCall()
+            // console.log(dishType)
+            // recipeCall()
         }
         if (cuisineType === "null") {
             queryURL = queryURL
-            recipeCall()
+            // recipeCall()
         }
         if (cuisineType !== "null") {
             queryURL = queryURL + "&cuisineType=" + cuisineType
-            recipeCall()
+            // recipeCall()
         }
         if (dietLabels === "null") {
             queryURL = queryURL
-            recipeCall()
+            // recipeCall()
         }
         if (dietLabels !== "null") {
             queryURL = queryURL + "&dietLabels=" + dietLabels
-            recipeCall()
+            // recipeCall()
         }
 
-        console.log(queryURL)
-    }
+        if (checkbox !== "null")
 
-});
+            queryURL = queryURL + checkbox
+            // recipeCall()
+            // console.log(checkbox
+        
+        if (checkbox === "null"){
+             queryURL = queryURl
+        recipeCall()
+            }
+        
+        
+        console.log(queryURL);
+        // return queryURL;
+    
+
+}});

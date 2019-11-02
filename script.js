@@ -134,4 +134,9 @@ $(document).ready(function () {
 
     // add event listener to open the recipe card pop up within the display recipe function-->
 
+    // add a print recipe button 
+    // $("#printBox").click(function (){
+    //     $(".modal-wrap").print();
+    // })
+    
 });
